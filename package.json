@@ -1,0 +1,17 @@
+{
+  "name": "form-refactor",
+  "version": "1.0.0",
+  "description": "Refactoring a crappy web form",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "browserify": "browserify app.js -t [ babelify --presets [ es2015 react ] ] --outfile bundle.js"
+  },
+  "author": "@SamSamskies",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1"
+  }
+}
