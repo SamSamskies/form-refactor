@@ -42,6 +42,7 @@ const FullNameInput = React.createClass({
         {...optionalProps} />
     );
   }
+
 });
 
 module.exports = FullNameInput;
