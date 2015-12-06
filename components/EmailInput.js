@@ -1,7 +1,7 @@
 let React = require('react');
 let Input = require('react-bootstrap').Input;
 
-const FullNameInput = React.createClass({
+const EmailInput = React.createClass({
 
   getInitialState() {
     return {
@@ -10,7 +10,8 @@ const FullNameInput = React.createClass({
   },
 
   validationState() {
-    return this.refs.input.getValue().length > 0 ? 'success' : 'error';
+    if (this._isValidEmail()) return 'success';
+    if (!this._hasValue()) return 'error';
   },
 
   handleChange() {
@@ -18,7 +19,7 @@ const FullNameInput = React.createClass({
     // http://facebook.github.io/react/docs/two-way-binding-helpers.html
     this.setState({
       value: this.refs.input.getValue(),
-      help: this.validationState() === 'error' ? 'Required' : '',
+      help: this.validationState() === 'error' ? 'Invalid email' : '',
       bsStyle: this.validationState()
     });
   },
@@ -41,9 +42,18 @@ const FullNameInput = React.createClass({
         onChange={this.handleChange}
         {...optionalProps} />
     );
+  },
+
+  _hasValue() {
+    return this.refs.input.getValue().length > 0;
+  },
+
+  _isValidEmail() {
+    let email = this.refs.input.getValue();
+    return require('email-validator').validate(email);
   }
 
 });
 
-module.exports = FullNameInput;
+module.exports = EmailInput;
 
