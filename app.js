@@ -1,9 +1,11 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Button = require('react-bootstrap').Button;
+let React = require('react');
+let ReactDOM = require('react-dom');
+let FullNameInput = require('./components/FullNameInput');
 
-const test = (
-  <Button bsStyle="primary">Primary</Button>
+const form = (
+  <form>
+    <FullNameInput />
+  </form>
 );
 
-ReactDOM.render(test, document.querySelector('#test'));
+ReactDOM.render(form, document.querySelector('#main'));
