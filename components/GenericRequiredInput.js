@@ -22,6 +22,12 @@ const GenericRequiredInput = React.createClass({
     // http://facebook.github.io/react/docs/two-way-binding-helpers.html
     this.setState({
       value: this.refs.input.getValue(),
+    });
+    this.updateStyles();
+  },
+
+  updateStyles() {
+    this.setState({
       help: this.validate() ? '' : 'Required',
       bsStyle: this.validationState()
     });

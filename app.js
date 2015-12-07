@@ -11,6 +11,7 @@ const CheckoutForm = React.createClass({
   validate(e) {
     e.preventDefault();
     let allGood = _.reduce(this.refs, (memo, r) => {
+      r.updateStyles();
       return memo && r.validate();
     }, true);
 
@@ -24,7 +25,7 @@ const CheckoutForm = React.createClass({
         <EmailInput ref="email" label="Email Address" placeholder="jane@example.com" />
         <Input type="checkbox" label="Put me on the mailing list" />
         <h3>Your Shipping Address</h3>
-        <GenericRequiredInput type="text" label="Full Name" placeholder="Jane Doe" autoComplete="name" />
+        <GenericRequiredInput ref="fullName" type="text" label="Full Name" placeholder="Jane Doe" autoComplete="name" />
         <GenericRequiredInput type="text" label="Address Line 1" placeholder="1234 Main St." autoComplete="address-line1" />
         <Input type="text" label="Address Line 2" placeholder="Ste 36" autoComplete="address-line2" />
         <GenericRequiredInput type="text" label="City" placeholder="Anytown" autoComplete="locality" />
