@@ -27,8 +27,6 @@ var CheckoutForm = React.createClass({
   },
   serialize: function serialize() {
     return {
-      email: this.refs.email.getValue(),
-      subscribe: this.refs.subscribe.getChecked(),
       shippingAddress: this.refs.shippingAddress.serialize(),
       billingAddress: this.refs.billingAddress.serialize(),
       creditCard: this.refs.creditCard.serialize()
@@ -40,157 +38,139 @@ var CheckoutForm = React.createClass({
       { onSubmit: this.validate },
       React.createElement(
         'div',
-        { className: 'row' },
+        { className: 'panel panel-default' },
         React.createElement(
           'div',
-          { className: 'col-md-9' },
-          React.createElement(EmailInput, { ref: 'email', label: 'Email Address', placeholder: 'jane@example.com' }),
-          React.createElement(Input, { ref: 'subscribe', type: 'checkbox', label: 'Put me on the mailing list' })
+          { className: 'panel-body' },
+          React.createElement(AddressSection, { ref: 'shippingAddress', headerText: 'Your Shipping Address' })
         )
       ),
       React.createElement(
         'div',
-        { className: 'row panel' },
+        { className: 'panel panel-default' },
         React.createElement(
           'div',
-          { className: 'col-md-4 panel panel-default' },
-          React.createElement(
-            'div',
-            { className: 'panel-body' },
-            React.createElement(AddressSection, { ref: 'shippingAddress', headerText: 'Your Shipping Address' })
-          )
-        ),
-        React.createElement(
-          'div',
-          { className: 'col-md-4 col-md-offset-1 panel panel-default' },
-          React.createElement(
-            'div',
-            { className: 'panel-body' },
-            React.createElement(AddressSection, { ref: 'billingAddress', headerText: 'Your Billing Address', allowSkip: 'true', skipText: 'Same as shipping address' })
-          )
+          { className: 'panel-body' },
+          React.createElement(AddressSection, { ref: 'billingAddress', headerText: 'Your Billing Address', allowSkip: 'true', skipText: 'Same as shipping address' })
         )
       ),
       React.createElement(
         'div',
-        { className: 'row' },
+        { className: 'panel panel-default' },
         React.createElement(
           'div',
-          { className: 'col-md-4 panel panel-default' },
-          React.createElement(
-            'div',
-            { className: 'panel-body' },
-            React.createElement(CreditCardSection, { ref: 'creditCard' })
-          )
-        ),
+          { className: 'panel-body' },
+          React.createElement(CreditCardSection, { ref: 'creditCard' })
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'panel panel-default' },
         React.createElement(
-          'div',
-          { className: 'col-md-4 col-md-offset-1' },
+          'section',
+          { className: 'panel-body' },
           React.createElement(
-            'section',
+            'h3',
             null,
+            'Your Order'
+          ),
+          React.createElement(
+            'table',
+            { className: 'table table-striped' },
             React.createElement(
-              'h3',
+              'tbody',
               null,
-              'Your Order'
-            ),
-            React.createElement(
-              'table',
-              { className: 'table table-striped' },
               React.createElement(
-                'tbody',
+                'tr',
                 null,
                 React.createElement(
-                  'tr',
+                  'td',
                   null,
-                  React.createElement(
-                    'td',
-                    null,
-                    'Product'
-                  ),
-                  React.createElement(
-                    'td',
-                    null,
-                    'Quantity'
-                  ),
-                  React.createElement(
-                    'td',
-                    null,
-                    'Price'
-                  ),
-                  React.createElement(
-                    'td',
-                    null,
-                    'Total'
-                  )
+                  'Product'
                 ),
                 React.createElement(
-                  'tr',
+                  'td',
                   null,
-                  React.createElement(
-                    'td',
-                    null,
-                    'Game Console 2015'
-                  ),
-                  React.createElement(
-                    'td',
-                    null,
-                    '1'
-                  ),
-                  React.createElement(
-                    'td',
-                    null,
-                    '$500.00'
-                  ),
-                  React.createElement(
-                    'td',
-                    null,
-                    '$500.00'
-                  )
+                  'Quantity'
                 ),
                 React.createElement(
-                  'tr',
+                  'td',
                   null,
-                  React.createElement(
-                    'td',
-                    null,
-                    'Platformer Bros 3D'
-                  ),
-                  React.createElement(
-                    'td',
-                    null,
-                    '1'
-                  ),
-                  React.createElement(
-                    'td',
-                    null,
-                    '$50.00'
-                  ),
-                  React.createElement(
-                    'td',
-                    null,
-                    '$50.00'
-                  )
+                  'Price'
                 ),
                 React.createElement(
-                  'tr',
+                  'td',
                   null,
-                  React.createElement(
-                    'td',
-                    null,
-                    'Total'
-                  ),
-                  React.createElement('td', null),
-                  React.createElement('td', null),
-                  React.createElement(
-                    'td',
-                    null,
-                    '$550.00'
-                  )
+                  'Total'
+                )
+              ),
+              React.createElement(
+                'tr',
+                null,
+                React.createElement(
+                  'td',
+                  null,
+                  'Game Console 2015'
+                ),
+                React.createElement(
+                  'td',
+                  null,
+                  '1'
+                ),
+                React.createElement(
+                  'td',
+                  null,
+                  '$500.00'
+                ),
+                React.createElement(
+                  'td',
+                  null,
+                  '$500.00'
+                )
+              ),
+              React.createElement(
+                'tr',
+                null,
+                React.createElement(
+                  'td',
+                  null,
+                  'Platformer Bros 3D'
+                ),
+                React.createElement(
+                  'td',
+                  null,
+                  '1'
+                ),
+                React.createElement(
+                  'td',
+                  null,
+                  '$50.00'
+                ),
+                React.createElement(
+                  'td',
+                  null,
+                  '$50.00'
+                )
+              ),
+              React.createElement(
+                'tr',
+                null,
+                React.createElement(
+                  'td',
+                  null,
+                  'Total'
+                ),
+                React.createElement('td', null),
+                React.createElement('td', null),
+                React.createElement(
+                  'td',
+                  null,
+                  '$550.00'
                 )
               )
-            ),
-            React.createElement(ButtonInput, { type: 'submit', value: 'Pay Now', className: 'pull-right' })
-          )
+            )
+          ),
+          React.createElement(ButtonInput, { type: 'submit', value: 'Pay Now', className: 'pull-right' })
         )
       )
     );
@@ -211,7 +191,7 @@ var AddressSection = React.createClass({
   displayName: 'AddressSection',
   getInitialState: function getInitialState() {
     return {
-      isHidden: false
+      isHidden: this.props.allowSkip
     };
   },
   validate: function validate() {
@@ -243,7 +223,7 @@ var AddressSection = React.createClass({
         null,
         this.props.headerText
       ),
-      React.createElement(Input, { type: 'checkbox', label: this.props.skipText, className: this.props.allowSkip ? '' : 'hidden', onChange: this.toggleAddressFields }),
+      React.createElement(Input, { type: 'checkbox', label: this.props.skipText, className: this.props.allowSkip ? '' : 'hidden', onChange: this.toggleAddressFields, checked: this.state.isHidden }),
       React.createElement(
         'div',
         { className: this.state.isHidden ? 'hidden' : '' },
