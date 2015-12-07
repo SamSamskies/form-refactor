@@ -12,8 +12,9 @@ const CheckoutForm = React.createClass({
   validate(e) {
     e.preventDefault();
     let allGood = _.reduce(this.refs, (memo, r) => {
-      r.updateStyles();
-      return memo && r.validate();
+      let isValid = r.validate();
+      if (r.updateStyles) r.updateStyles();
+      return memo && isValid;
     }, true);
 
     let message = allGood ? 'Success. Check the dev console for all your data.' : 'Please complete all necessary information.';
@@ -32,19 +33,19 @@ const CheckoutForm = React.createClass({
         <div className="row panel">
           <div className="col-md-4 panel panel-default">
             <div className="panel-body">
-              <AddressSection headerText="Your Shipping Address" />
+              <AddressSection ref="shippingAddress" headerText="Your Shipping Address" />
             </div>
           </div>
           <div className="col-md-4 col-md-offset-1 panel panel-default">
             <div className="panel-body">
-              <AddressSection headerText="Your Billing Address" />
+              <AddressSection ref="billingAddress" headerText="Your Billing Address" />
             </div>
           </div>
         </div>
         <div className="row">
           <div className="col-md-4 panel panel-default">
             <div className="panel-body">
-              <CreditCardSection />
+              <CreditCardSection ref="creditCard" />
             </div>
           </div>
           <div className="col-md-4 col-md-offset-1">
@@ -78,13 +79,8 @@ const CheckoutForm = React.createClass({
                   </tr>
                 </tbody>
               </table>
-              <Input type="checkbox" label="Is your order correct?" />
-            </section>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-9">
             <ButtonInput type="submit" value="Pay Now" className="pull-right" />
+            </section>
           </div>
         </div>
       </form>
