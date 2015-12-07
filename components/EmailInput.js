@@ -9,6 +9,10 @@ const EmailInput = React.createClass({
     };
   },
 
+  validate() {
+    return this._isValidEmail();
+  },
+
   validationState() {
     if (this._isValidEmail()) return 'success';
     if (!this._hasValue()) return 'error';
