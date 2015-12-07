@@ -15,7 +15,7 @@ const CheckoutForm = React.createClass({
       return memo && r.validate();
     }, true);
 
-    let message = allGood ? 'Success. Thank you.' : 'Please complete all necessary information.';
+    let message = allGood ? 'Success. Check the dev console for all your data.' : 'Please complete all necessary information.';
     alert(message);
   },
 
@@ -32,6 +32,9 @@ const CheckoutForm = React.createClass({
         <GenericRequiredInput type="text" label="State/Province" placeholder="CA" autoComplete="region" />
         <GenericRequiredInput type="text" label="Postal Code" placeholder="123456" autoComplete="postal-code" />
         <GenericRequiredInput type="text" label="Country" placeholder="USA" autoComplete="country-name" />
+        <h3>Your Credit Card Information</h3>
+        <div className="cc-warning"><em>Note: don't enter any actual credit card info!</em></div>
+        <GenericRequiredInput type="text" label="Credit Card Number" placeholder="xxxx xxxx xxxx xxxx" autoComplete="cc-number" />
         <ButtonInput type="submit" value="Pay Now" className="pull-right" />
       </form>
     );

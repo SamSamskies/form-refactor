@@ -1,7 +1,7 @@
 {
   "name": "form-refactor",
   "version": "1.0.0",
-  "description": "Refactoring a crappy web form",
+  "description": "React-Bootstrap Example Form",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "browserify": "browserify app.js -t [ babelify --presets [ es2015 react ] ] --outfile bundle.js"
