@@ -1,17 +1,13 @@
-let _ = require('underscore');
 let React = require('react');
 let Input = require('react-bootstrap').Input;
-let RequiredInputMixin = require('./RequiredInputMixin');
-let CreditCard = require('credit-card');
+let RequiredInputMixin = require('../RequiredInputMixin');
 
-const CreditCardNumberInput = React.createClass({
+const CreditCardCvvInput = React.createClass({
 
-  mixins: [RequiredInputMixin('Invalid credit card number')],
+  mixins: [RequiredInputMixin('Invalid CVV')],
 
   validate() {
-    let ccNum = this.refs.input.getValue().replace(/\s|-/g, '');
-    let supportedCardTypes = ['VC', 'MC', 'AE', 'DC'];
-    return _.find(supportedCardTypes, sct => CreditCard.isValidCardNumber(ccNum, sct));
+    return /\d{3,4}/.test(this.refs.input.getValue());
   },
 
   render() {
@@ -29,7 +25,7 @@ const CreditCardNumberInput = React.createClass({
         ref="input"
         groupClassName="group-class"
         labelClassName="label-class"
-        autoComplete="cc-number"
+        autoComplete="cc-csc"
         onChange={this.handleChange}
         {...optionalProps} />
     );
@@ -37,4 +33,4 @@ const CreditCardNumberInput = React.createClass({
 
 });
 
-module.exports = CreditCardNumberInput;
+module.exports = CreditCardCvvInput;

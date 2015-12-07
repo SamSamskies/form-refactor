@@ -5,9 +5,7 @@ let Input = require('react-bootstrap').Input;
 let ButtonInput = require('react-bootstrap').ButtonInput;
 let GenericRequiredInput = require('./components/GenericRequiredInput');
 let EmailInput = require('./components/EmailInput');
-let CreditCardNumberInput = require('./components/CreditCardNumberInput');
-let CreditCardExpDateInput = require('./components/CreditCardExpDateInput');
-let CreditCardCvvInput = require('./components/CreditCardCvvInput');
+let CreditCardSection = require('./components/CreditCard/CreditCardSection');
 
 const CheckoutForm = React.createClass({
 
@@ -35,11 +33,8 @@ const CheckoutForm = React.createClass({
         <GenericRequiredInput type="text" label="State/Province" placeholder="CA" autoComplete="region" />
         <GenericRequiredInput type="text" label="Postal Code" placeholder="123456" autoComplete="postal-code" />
         <GenericRequiredInput type="text" label="Country" placeholder="USA" autoComplete="country-name" />
-        <h3>Your Credit Card Information</h3>
-        <div className="cc-warning"><em>Note: don't enter any actual credit card info!</em></div>
-        <CreditCardNumberInput label="Credit Card Number" placeholder="xxxx xxxx xxxx xxxx" />
-        <CreditCardExpDateInput label="Expiration Date" placeholder="MM/YYYY" />
-        <CreditCardCvvInput label="CVV" placeholder="123" />
+        <CreditCardSection />
+        <h3>Your Billing Address</h3>
         <ButtonInput type="submit" value="Pay Now" className="pull-right" />
       </form>
     );

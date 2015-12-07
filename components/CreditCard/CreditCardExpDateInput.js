@@ -1,13 +1,16 @@
+let _ = require('underscore');
 let React = require('react');
 let Input = require('react-bootstrap').Input;
-let RequiredInputMixin = require('./RequiredInputMixin');
+let RequiredInputMixin = require('../RequiredInputMixin');
+let CreditCard = require('credit-card');
 
-const CreditCardCvvInput = React.createClass({
+const CreditCardExpDateInput = React.createClass({
 
-  mixins: [RequiredInputMixin('Invalid CVV')],
+  mixins: [RequiredInputMixin('Invalid expiration date')],
 
   validate() {
-    return /\d{3,4}/.test(this.refs.input.getValue());
+    let [expMon, expYear] = this.refs.input.getValue().split('/');
+    return CreditCard.isValidExpiryMonth(expMon) && CreditCard.isValidExpiryYear(expYear);
   },
 
   render() {
@@ -25,7 +28,7 @@ const CreditCardCvvInput = React.createClass({
         ref="input"
         groupClassName="group-class"
         labelClassName="label-class"
-        autoComplete="cc-csc"
+        autoComplete="cc-exp"
         onChange={this.handleChange}
         {...optionalProps} />
     );
@@ -33,4 +36,4 @@ const CreditCardCvvInput = React.createClass({
 
 });
 
-module.exports = CreditCardCvvInput;
+module.exports = CreditCardExpDateInput;
