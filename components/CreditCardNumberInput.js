@@ -9,7 +9,7 @@ const CreditCardNumberInput = React.createClass({
   mixins: [RequiredInputMixin('Invalid credit card number')],
 
   validate() {
-    let ccNum = this.refs.input.getValue();
+    let ccNum = this.refs.input.getValue().replace(/\s|-/g, '');
     let supportedCardTypes = ['VC', 'MC', 'AE', 'DC'];
     return _.find(supportedCardTypes, sct => CreditCard.isValidCardNumber(ccNum, sct));
   },
