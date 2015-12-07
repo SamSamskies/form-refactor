@@ -8,6 +8,10 @@ module.exports = function(helpText) {
       };
     },
 
+    getValue() {
+      return this.refs.input.getValue();
+    },
+
     validationState() {
       return this.validate() ? 'success' : 'error';
     },

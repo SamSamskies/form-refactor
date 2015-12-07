@@ -13,9 +13,10 @@ const AddressSection = React.createClass({
 
   validate() {
     if (this.state.isHidden) return true;
-    return _.reduce(this.refs, (memo, r) => {
-      r.updateStyles();
-      return memo && r.validate();
+    return _.reduce(this.refs, (memo, r, k) => {
+      let isValid = r.validate ? r.validate() : true;
+      if (r.updateStyles) r.updateStyles();
+      return memo && isValid;
     }, true);
   },
 
@@ -23,6 +24,14 @@ const AddressSection = React.createClass({
     this.setState({
       isHidden: e.target.checked
     });
+  },
+
+  serialize() {
+    if (this.state.isHidden) return;
+    return _.reduce(this.refs, (memo, v, k) => {
+      memo[k] = v.getValue();
+      return memo;
+    }, {});
   },
 
   render() {
@@ -33,7 +42,7 @@ const AddressSection = React.createClass({
         <div className={this.state.isHidden ? 'hidden' : ''}>
           <GenericRequiredInput ref="fullName" type="text" label="Full Name" placeholder="Jane Doe" autoComplete="name" />
           <GenericRequiredInput ref="addressLine1" type="text" label="Address Line 1" placeholder="1234 Main St." autoComplete="address-line1" />
-          <Input type="text" label="Address Line 2" placeholder="Ste 36" autoComplete="address-line2" />
+          <Input ref="addressLine2" type="text" label="Address Line 2" placeholder="Ste 36" autoComplete="address-line2" />
           <GenericRequiredInput ref="city" type="text" label="City" placeholder="Anytown" autoComplete="locality" />
           <GenericRequiredInput ref="state" type="text" label="State/Province" placeholder="CA" autoComplete="region" />
           <GenericRequiredInput ref="postalCode" type="text" label="Postal Code" placeholder="123456" autoComplete="postal-code" />

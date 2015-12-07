@@ -8,9 +8,17 @@ const CreditCardSection = React.createClass({
 
   validate() {
     return _.reduce(this.refs, (memo, r) => {
-      r.updateStyles();
-      return memo && r.validate();
+      let isValid = r.validate ? r.validate() : true;
+      if (r.updateStyles) r.updateStyles();
+      return memo && isValid;
     }, true);
+  },
+
+  serialize() {
+    return _.reduce(this.refs, (memo, v, k) => {
+      memo[k] = v.getValue();
+      return memo;
+    }, {});
   },
 
   render() {

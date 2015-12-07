@@ -12,13 +12,25 @@ const CheckoutForm = React.createClass({
   validate(e) {
     e.preventDefault();
     let allGood = _.reduce(this.refs, (memo, r) => {
-      let isValid = r.validate();
+      let isValid = r.validate ? r.validate() : true;
       if (r.updateStyles) r.updateStyles();
       return memo && isValid;
     }, true);
 
     let message = allGood ? 'Success. Check the dev console for all your data.' : 'Please complete all necessary information.';
     alert(message);
+
+    if (allGood) console.log(this.serialize())
+  },
+
+  serialize() {
+    return {
+      email: this.refs.email.getValue(),
+      subscribe: this.refs.subscribe.getChecked(),
+      shippingAddress: this.refs.shippingAddress.serialize(),
+      billingAddress: this.refs.billingAddress.serialize(),
+      creditCard: this.refs.creditCard.serialize()
+    }
   },
 
   render() {
@@ -27,7 +39,7 @@ const CheckoutForm = React.createClass({
         <div className="row">
           <div className="col-md-9">
             <EmailInput ref="email" label="Email Address" placeholder="jane@example.com" />
-            <Input type="checkbox" label="Put me on the mailing list" />
+            <Input ref="subscribe" type="checkbox" label="Put me on the mailing list" />
           </div>
         </div>
         <div className="row panel">
