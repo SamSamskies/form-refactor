@@ -7,7 +7,7 @@ const AddressSection = React.createClass({
 
   getInitialState() {
     return {
-      isHidden: false
+      isHidden: this.props.allowSkip
     };
   },
 
@@ -38,7 +38,7 @@ const AddressSection = React.createClass({
     return (
       <section>
         <h3>{this.props.headerText}</h3>
-        <Input type="checkbox" label={this.props.skipText} className={this.props.allowSkip ? '' : 'hidden' } onChange={this.toggleAddressFields} />
+        <Input type="checkbox" label={this.props.skipText} className={this.props.allowSkip ? '' : 'hidden' } onChange={this.toggleAddressFields} checked={this.state.isHidden}/>
         <div className={this.state.isHidden ? 'hidden' : ''}>
           <GenericRequiredInput ref="fullName" type="text" label="Full Name" placeholder="Jane Doe" autoComplete="name" />
           <GenericRequiredInput ref="addressLine1" type="text" label="Address Line 1" placeholder="1234 Main St." autoComplete="address-line1" />
