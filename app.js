@@ -5,6 +5,7 @@ let Input = require('react-bootstrap').Input;
 let ButtonInput = require('react-bootstrap').ButtonInput;
 let GenericRequiredInput = require('./components/GenericRequiredInput');
 let EmailInput = require('./components/EmailInput');
+let CreditCardNumberInput = require('./components/CreditCardNumberInput');
 
 const CheckoutForm = React.createClass({
 
@@ -34,7 +35,7 @@ const CheckoutForm = React.createClass({
         <GenericRequiredInput type="text" label="Country" placeholder="USA" autoComplete="country-name" />
         <h3>Your Credit Card Information</h3>
         <div className="cc-warning"><em>Note: don't enter any actual credit card info!</em></div>
-        <GenericRequiredInput type="text" label="Credit Card Number" placeholder="xxxx xxxx xxxx xxxx" autoComplete="cc-number" />
+        <CreditCardNumberInput type="text" label="Credit Card Number" placeholder="xxxx xxxx xxxx xxxx" autoComplete="cc-number" />
         <ButtonInput type="submit" value="Pay Now" className="pull-right" />
       </form>
     );
