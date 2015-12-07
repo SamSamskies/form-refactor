@@ -28,6 +28,38 @@ const CheckoutForm = React.createClass({
         <AddressSection headerText="Your Shipping Address" />
         <CreditCardSection />
         <AddressSection headerText="Your Billing Address" />
+        <section>
+          <h3>Your Order</h3>
+          <table className="table table-striped">
+            <tbody>
+              <tr>
+                <td>Product</td>
+                <td>Quantity</td>
+                <td>Price</td>
+                <td>Total</td>
+              </tr>
+              <tr>
+                <td>Game Console 2015</td>
+                <td>1</td>
+                <td>$500.00</td>
+                <td>$500.00</td>
+              </tr>
+              <tr>
+                <td>Platformer Bros 3D</td>
+                <td>1</td>
+                <td>$50.00</td>
+                <td>$50.00</td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td></td>
+                <td></td>
+                <td>$550.00</td>
+              </tr>
+            </tbody>
+          </table>
+          <Input type="checkbox" label="Is your order correct?" />
+        </section>
         <ButtonInput type="submit" value="Pay Now" className="pull-right" />
       </form>
     );
