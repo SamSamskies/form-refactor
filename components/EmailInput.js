@@ -34,7 +34,7 @@ const EmailInput = React.createClass({
 
     return (
       <Input
-        type="text"
+        type="email"
         value={this.state.value}
         placeholder={this.props.placeholder}
         label={this.props.label}
@@ -42,6 +42,7 @@ const EmailInput = React.createClass({
         ref="input"
         groupClassName="group-class"
         labelClassName="label-class"
+        autoComplete="email"
         onChange={this.handleChange}
         {...optionalProps} />
     );

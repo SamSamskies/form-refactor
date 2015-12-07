@@ -1,7 +1,7 @@
 let React = require('react');
 let Input = require('react-bootstrap').Input;
 
-const FullNameInput = React.createClass({
+const GenericRequiredInput = React.createClass({
 
   getInitialState() {
     return {
@@ -34,10 +34,11 @@ const FullNameInput = React.createClass({
 
     return (
       <Input
-        type="text"
+        type={this.props.type}
         value={this.state.value}
         placeholder={this.props.placeholder}
         label={this.props.label}
+        autoComplete={this.props.autoComplete}
         hasFeedback
         ref="input"
         groupClassName="group-class"
@@ -49,5 +50,5 @@ const FullNameInput = React.createClass({
 
 });
 
-module.exports = FullNameInput;
+module.exports = GenericRequiredInput;
 
