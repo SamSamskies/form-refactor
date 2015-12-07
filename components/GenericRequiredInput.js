@@ -1,36 +1,13 @@
 let React = require('react');
 let Input = require('react-bootstrap').Input;
+let RequiredInputMixin = require('./RequiredInputMixin');
 
 const GenericRequiredInput = React.createClass({
 
-  getInitialState() {
-    return {
-      value: ''
-    };
-  },
+  mixins: [RequiredInputMixin('Required')],
 
   validate() {
     return this.refs.input.getValue().length > 0;
-  },
-
-  validationState() {
-    return this.validate() ? 'success' : 'error';
-  },
-
-  handleChange() {
-    // This could also be done using ReactLink:
-    // http://facebook.github.io/react/docs/two-way-binding-helpers.html
-    this.setState({
-      value: this.refs.input.getValue(),
-    });
-    this.updateStyles();
-  },
-
-  updateStyles() {
-    this.setState({
-      help: this.validate() ? '' : 'Required',
-      bsStyle: this.validationState()
-    });
   },
 
   render() {

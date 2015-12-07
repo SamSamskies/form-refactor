@@ -15,6 +15,7 @@
     "browserify": "^12.0.1"
   },
   "dependencies": {
+    "credit-card": "^2.0.0",
     "email-validator": "^1.0.3",
     "react": "^0.14.3",
     "react-bootstrap": "^0.28.1",

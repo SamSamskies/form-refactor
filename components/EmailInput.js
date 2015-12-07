@@ -1,37 +1,14 @@
 let React = require('react');
 let Input = require('react-bootstrap').Input;
+let RequiredInputMixin = require('./RequiredInputMixin');
 
 const EmailInput = React.createClass({
 
-  getInitialState() {
-    return {
-      value: ''
-    };
-  },
+  mixins: [RequiredInputMixin('Invalid email')],
 
   validate() {
     let email = this.refs.input.getValue();
     return require('email-validator').validate(email);
-  },
-
-  validationState() {
-    return this.validate() ? 'success' : 'error';
-  },
-
-  handleChange() {
-    // This could also be done using ReactLink:
-    // http://facebook.github.io/react/docs/two-way-binding-helpers.html
-    this.setState({
-      value: this.refs.input.getValue()
-    });
-    this.updateStyles();
-  },
-
-  updateStyles() {
-    this.setState({
-      help: this.validate() ? '' : 'Invalid email',
-      bsStyle: this.validationState()
-    });
   },
 
   render() {
