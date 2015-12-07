@@ -14,8 +14,7 @@ const EmailInput = React.createClass({
   },
 
   validationState() {
-    if (this._isValidEmail()) return 'success';
-    if (!this._hasValue()) return 'error';
+    return this.validate() ? 'success' : 'error';
   },
 
   handleChange() {
@@ -23,7 +22,7 @@ const EmailInput = React.createClass({
     // http://facebook.github.io/react/docs/two-way-binding-helpers.html
     this.setState({
       value: this.refs.input.getValue(),
-      help: this.validationState() === 'error' ? 'Invalid email' : '',
+      help: this.validate() ? '' : 'Invalid email',
       bsStyle: this.validationState()
     });
   },

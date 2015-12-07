@@ -22,7 +22,7 @@ const FullNameInput = React.createClass({
     // http://facebook.github.io/react/docs/two-way-binding-helpers.html
     this.setState({
       value: this.refs.input.getValue(),
-      help: this.validate() ? 'Required' : '',
+      help: this.validate() ? '' : 'Required',
       bsStyle: this.validationState()
     });
   },
