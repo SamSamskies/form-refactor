@@ -38,7 +38,7 @@ const CheckoutForm = React.createClass({
           </div>
           <div className="col-md-4 col-md-offset-1 panel panel-default">
             <div className="panel-body">
-              <AddressSection ref="billingAddress" headerText="Your Billing Address" />
+              <AddressSection ref="billingAddress" headerText="Your Billing Address" allowSkip="true" skipText="Same as shipping address" />
             </div>
           </div>
         </div>
