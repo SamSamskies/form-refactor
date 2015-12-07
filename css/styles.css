@@ -6,14 +6,11 @@
   margin-top: 40px;
 }
 
-@media screen and (max-width: 650px) {
-}
-
-@media screen and (max-width: 450px) {
-}
-
 @media screen and (min-width: 451px) {
 }
 
 @media screen and (min-width: 651px) {
+}
+
+@media screen and (min-width: 769px) {
 }

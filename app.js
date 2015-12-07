@@ -1,6 +1,7 @@
 let _ = require('underscore');
 let React = require('react');
 let ReactDOM = require('react-dom');
+let Input = require('react-bootstrap').Input;
 let ButtonInput = require('react-bootstrap').ButtonInput;
 let FullNameInput = require('./components/FullNameInput');
 let EmailInput = require('./components/EmailInput');
@@ -22,6 +23,7 @@ const CheckoutForm = React.createClass({
       <form onSubmit={this.validate}>
         <FullNameInput ref="fullName" label="Full Name" placeholder="Jane Doe" />
         <EmailInput ref="email" label="Email Address" placeholder="jane@example.com" />
+        <Input type="checkbox" label="Put me on the mailing list" />
         <ButtonInput type="submit" value="Pay Now" className="pull-right" />
       </form>
     );
