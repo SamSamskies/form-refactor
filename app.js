@@ -23,44 +23,70 @@ const CheckoutForm = React.createClass({
   render() {
     return (
       <form onSubmit={this.validate}>
-        <EmailInput ref="email" label="Email Address" placeholder="jane@example.com" />
-        <Input type="checkbox" label="Put me on the mailing list" />
-        <AddressSection headerText="Your Shipping Address" />
-        <CreditCardSection />
-        <AddressSection headerText="Your Billing Address" />
-        <section>
-          <h3>Your Order</h3>
-          <table className="table table-striped">
-            <tbody>
-              <tr>
-                <td>Product</td>
-                <td>Quantity</td>
-                <td>Price</td>
-                <td>Total</td>
-              </tr>
-              <tr>
-                <td>Game Console 2015</td>
-                <td>1</td>
-                <td>$500.00</td>
-                <td>$500.00</td>
-              </tr>
-              <tr>
-                <td>Platformer Bros 3D</td>
-                <td>1</td>
-                <td>$50.00</td>
-                <td>$50.00</td>
-              </tr>
-              <tr>
-                <td>Total</td>
-                <td></td>
-                <td></td>
-                <td>$550.00</td>
-              </tr>
-            </tbody>
-          </table>
-          <Input type="checkbox" label="Is your order correct?" />
-        </section>
-        <ButtonInput type="submit" value="Pay Now" className="pull-right" />
+        <div className="row">
+          <div className="col-md-9">
+            <EmailInput ref="email" label="Email Address" placeholder="jane@example.com" />
+            <Input type="checkbox" label="Put me on the mailing list" />
+          </div>
+        </div>
+        <div className="row panel">
+          <div className="col-md-4 panel panel-default">
+            <div className="panel-body">
+              <AddressSection headerText="Your Shipping Address" />
+            </div>
+          </div>
+          <div className="col-md-4 col-md-offset-1 panel panel-default">
+            <div className="panel-body">
+              <AddressSection headerText="Your Billing Address" />
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-4 panel panel-default">
+            <div className="panel-body">
+              <CreditCardSection />
+            </div>
+          </div>
+          <div className="col-md-4 col-md-offset-1">
+            <section>
+              <h3>Your Order</h3>
+              <table className="table table-striped">
+                <tbody>
+                  <tr>
+                    <td>Product</td>
+                    <td>Quantity</td>
+                    <td>Price</td>
+                    <td>Total</td>
+                  </tr>
+                  <tr>
+                    <td>Game Console 2015</td>
+                    <td>1</td>
+                    <td>$500.00</td>
+                    <td>$500.00</td>
+                  </tr>
+                  <tr>
+                    <td>Platformer Bros 3D</td>
+                    <td>1</td>
+                    <td>$50.00</td>
+                    <td>$50.00</td>
+                  </tr>
+                  <tr>
+                    <td>Total</td>
+                    <td></td>
+                    <td></td>
+                    <td>$550.00</td>
+                  </tr>
+                </tbody>
+              </table>
+              <Input type="checkbox" label="Is your order correct?" />
+            </section>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-9">
+            <ButtonInput type="submit" value="Pay Now" className="pull-right" />
+          </div>
+        </div>
       </form>
     );
   }
