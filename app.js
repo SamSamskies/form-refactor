@@ -25,8 +25,6 @@ const CheckoutForm = React.createClass({
 
   serialize() {
     return {
-      email: this.refs.email.getValue(),
-      subscribe: this.refs.subscribe.getChecked(),
       shippingAddress: this.refs.shippingAddress.serialize(),
       billingAddress: this.refs.billingAddress.serialize(),
       creditCard: this.refs.creditCard.serialize()
