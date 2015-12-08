@@ -23,13 +23,13 @@ var CheckoutForm = React.createClass({
     var message = allGood ? 'Success. Check the dev console for all your data.' : 'Please complete all necessary information.';
     alert(message);
 
-    if (allGood) console.log(this.serialize());
+    if (allGood) console.log(this.toJSON());
   },
-  serialize: function serialize() {
+  toJSON: function toJSON() {
     return {
-      shippingAddress: this.refs.shippingAddress.serialize(),
-      billingAddress: this.refs.billingAddress.serialize(),
-      creditCard: this.refs.creditCard.serialize()
+      shippingAddress: this.refs.shippingAddress.toJSON(),
+      billingAddress: this.refs.billingAddress.toJSON(),
+      creditCard: this.refs.creditCard.toJSON()
     };
   },
   render: function render() {
@@ -207,7 +207,7 @@ var AddressSection = React.createClass({
       isHidden: e.target.checked
     });
   },
-  serialize: function serialize() {
+  toJSON: function toJSON() {
     if (this.state.isHidden) return;
     return _.reduce(this.refs, function (memo, v, k) {
       memo[k] = v.getValue();
@@ -394,7 +394,7 @@ var CreditCardSection = React.createClass({
       return memo && isValid;
     }, true);
   },
-  serialize: function serialize() {
+  toJSON: function toJSON() {
     return _.reduce(this.refs, function (memo, v, k) {
       memo[k] = v.getValue();
       return memo;
