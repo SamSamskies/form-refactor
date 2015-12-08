@@ -26,7 +26,7 @@ const AddressSection = React.createClass({
     });
   },
 
-  serialize() {
+  toJSON() {
     if (this.state.isHidden) return;
     return _.reduce(this.refs, (memo, v, k) => {
       memo[k] = v.getValue();

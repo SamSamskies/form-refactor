@@ -20,14 +20,14 @@ const CheckoutForm = React.createClass({
     let message = allGood ? 'Success. Check the dev console for all your data.' : 'Please complete all necessary information.';
     alert(message);
 
-    if (allGood) console.log(this.serialize())
+    if (allGood) console.log(this.toJSON())
   },
 
-  serialize() {
+  toJSON() {
     return {
-      shippingAddress: this.refs.shippingAddress.serialize(),
-      billingAddress: this.refs.billingAddress.serialize(),
-      creditCard: this.refs.creditCard.serialize()
+      shippingAddress: this.refs.shippingAddress.toJSON(),
+      billingAddress: this.refs.billingAddress.toJSON(),
+      creditCard: this.refs.creditCard.toJSON()
     }
   },
 
