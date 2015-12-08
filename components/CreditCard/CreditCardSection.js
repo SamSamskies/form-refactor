@@ -14,7 +14,7 @@ const CreditCardSection = React.createClass({
     }, true);
   },
 
-  serialize() {
+  toJSON() {
     return _.reduce(this.refs, (memo, v, k) => {
       memo[k] = v.getValue();
       return memo;
